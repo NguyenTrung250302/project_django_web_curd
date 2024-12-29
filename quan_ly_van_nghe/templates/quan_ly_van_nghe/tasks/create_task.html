@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm Tiết Mục Mới</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/tasks/create_task.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1>Quản Lý Văn Nghệ - Thêm Tiết Mục</h1>
+      <nav>
+        <a href="{% url 'home' %}">Quay lại trang chủ</a> |
+        <a href="{% url 'task_list' %}">Danh sách Tiết Mục</a>
+      </nav>
+    </header>
+
+    <h2>Thêm Tiết Mục Mới</h2>
+
+    <!-- Form tạo Tiết Mục -->
+    <form method="post">
+      {% csrf_token %}
+      <div>
+        <label for="name">Tiết Mục:</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div>
+        <label for="event">Chương Trình:</label>
+        <select id="event" name="event" required>
+          {% for event in events %}
+          <option value="{{ event.id }}">{{ event.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label for="description">Mô Tả:</label>
+        <textarea id="description" name="description"></textarea>
+      </div>
+      <div>
+        <label for="deadline">Hạn Chót:</label>
+        <input type="date" id="deadline" name="deadline" required />
+      </div>
+
+      <button type="submit">Thêm Tiết Mục</button>
+    </form>
+
+    <footer>
+      <p>&copy; 2024 Quản Lý Văn Nghệ</p>
+    </footer>
+  </body>
+</html>

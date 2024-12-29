@@ -1,0 +1,142 @@
+/* Reset mặc định */
+body,
+h1,
+p,
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.9);
+  width: 80%;
+  max-width: 1200px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  animation: fadeIn 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Styles */
+header {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(to right, #4caf50, #81c784);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2em;
+}
+
+/* Navigation Styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+}
+
+nav li {
+  display: inline;
+}
+
+nav a {
+  color: #388e3c;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  color: #4caf50;
+  transform: scale(1.1);
+}
+
+.logout-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  color: #fff;
+  background: #388e3c;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout-button:hover {
+  background: #2e7d32;
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: linear-gradient(to right, #4caf50, #81c784);
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
+  margin-top: auto;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+/* Tăng khoảng cách giữa các phần */
+header,
+nav,
+footer {
+  margin-bottom: 20px;
+}
+
+#background-home {
+  width: 100%;
+  height: 180px;
+}

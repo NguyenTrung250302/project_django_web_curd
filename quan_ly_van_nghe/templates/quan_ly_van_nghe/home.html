@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Chủ</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Chào mừng bạn đến với hệ thống quản lý chương trình văn nghệ</h1>
+        <p>
+          Đây là trang chủ của bạn. Bạn có thể quản lý chương trình văn nghệ từ
+          đây.
+        </p>
+        <h1>Welcome, {{ request.user.username }}!</h1>
+      </header>
+
+      <nav>
+        <ul>
+          <li><a href="{% url 'event_programs' %}">Quản lý chương trình</a></li>
+          <li>
+            <a href="{% url 'task_list' %}"
+              >Quản lý tiết mục mỗi chương trình</a
+            >
+          </li>
+        </ul>
+        <a href="{% url 'logout' %}" class="logout-button">Đăng xuất</a>
+      </nav>
+      <div id="background-home"></div>
+      <footer>
+        <p>&copy; 2024 Hệ thống quản lý chương trình văn nghệ tại địa phương</p>
+      </footer>
+    </div>
+  </body>
+</html>

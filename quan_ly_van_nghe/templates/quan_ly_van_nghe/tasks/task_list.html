@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Danh Sách Tiết Mục</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/tasks/task_list.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1>Quản Lý Văn Nghệ - Danh Sách Tiết Mục</h1>
+      <nav>
+        <a href="{% url 'home' %}">Quay lại trang chủ</a> |
+        <a href="{% url 'create_task' %}">Thêm tiết mục</a>
+      </nav>
+    </header>
+
+    <h2>Chỉnh sửa Tiết Mục Văn Nghệ</h2>
+
+    <!-- Form tìm kiếm -->
+    <form method="get" action="{% url 'task_list' %}">
+      <input
+        type="text"
+        name="search"
+        placeholder="Tìm kiếm tên Tiết mục..."
+        value="{{ request.GET.search }}"
+      />
+      <button type="submit">Tìm kiếm</button>
+    </form>
+
+    <!-- Bảng danh sách Tiết mục -->
+    <table>
+      <thead>
+        <tr>
+          <th>Tiết mục</th>
+          <th>Chương trình</th>
+          <th>Mô tả</th>
+          <th>Hạn chót</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+        <tr>
+          <td>{{ task.name }}</td>
+          <td>{{ task.event.name }}</td>
+          <td>{{ task.description }}</td>
+          <td>{{ task.deadline|date:"l, j F Y" }}</td>
+
+          <td>
+            <a href="{% url 'edit_task' task.id %}">Chỉnh sửa</a> |
+            <a href="{% url 'delete_task' task.id %}">Xóa</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <footer>
+      <p>&copy; 2024 Quản Lý Văn Nghệ</p>
+    </footer>
+  </body>
+</html>

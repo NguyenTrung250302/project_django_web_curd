@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chỉnh Sửa Chương Trình: {{ event.name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/event/create_event.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1>Quản Lý Chương Trình</h1>
+      <nav>
+        <a href="{% url 'home' %}">Quay lại trang chủ</a> |
+        <a href="{% url 'event_programs' %}">Danh sách Chương Trình</a>
+      </nav>
+    </header>
+    <h2>Chỉnh Sửa Chương Trình: {{ event.name }}</h2>
+    <form method="post">
+      {% csrf_token %}
+
+      <label for="name">Tên chương trình:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        value="{{ event.name }}"
+        required
+      /><br />
+
+      <label for="start_date">Ngày bắt đầu:</label>
+      <input
+        type="date"
+        id="start_date"
+        name="start_date"
+        value="{{ event.start_date|date:'Y-m-d' }}"
+        required
+      /><br />
+
+      <label for="end_date">Ngày kết thúc:</label>
+      <input
+        type="date"
+        id="end_date"
+        name="end_date"
+        value="{{ event.end_date|date:'Y-m-d' }}"
+        required
+      /><br />
+
+      <label for="location">Địa điểm:</label>
+      <input
+        type="text"
+        id="location"
+        name="location"
+        value="{{ event.location.name }}"
+        required
+      /><br />
+
+      <label for="status">Trạng thái:</label>
+      <select id="status" name="status" required>
+        <option value="planned">Lên kế hoạch</option>
+        <option value="ongoing">Đang diễn ra</option>
+        <option value="completed">Kết thúc</option></select
+      ><br />
+
+      <button type="submit">Lưu thay đổi</button>
+    </form>
+  </body>
+</html>

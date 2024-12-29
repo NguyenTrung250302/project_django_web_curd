@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chỉnh sửa Chương Trình</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/event/create_event.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1>Quản Lý Chương Trình</h1>
+      <nav>
+        <a href="{% url 'home' %}">Quay lại trang chủ</a> |
+        <a href="{% url 'event_programs' %}">Danh sách Chương Trình</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Chỉnh sửa Chương Trình</h2>
+
+      <!-- Form chỉnh sửa Chương Trình -->
+      <form method="post">
+        {% csrf_token %}
+        
+        <div>
+          <label for="name">Tên chương trình:</label>
+          <input type="text" id="name" name="name" value="{{ event.name }}" required />
+        </div>
+
+        <div>
+          <label for="start_date">Ngày bắt đầu:</label>
+          <input
+            type="date"
+            id="start_date"
+            name="start_date"
+            required
+            value="{{ event.start_date|date:'Y-m-d' }}"
+          />
+        </div>
+
+        <div>
+          <label for="end_date">Ngày kết thúc:</label>
+          <input
+            type="date"
+            id="end_date"
+            name="end_date"
+            required
+            value="{{ event.end_date|date:'Y-m-d' }}"
+          />
+        </div>
+
+        <div>
+          <label for="location">Địa điểm:</label>
+          <input type="text" id="location" name="location" value="{{ event.location }}" required />
+        </div>
+
+        <div>
+          <label for="status">Trạng thái:</label>
+          <select id="status" name="status" required>
+            <option value="planned" {% if event.status == 'planned' %}selected{% endif %}>Lên kế hoạch</option>
+            <option value="ongoing" {% if event.status == 'ongoing' %}selected{% endif %}>Đang diễn ra</option>
+            <option value="completed" {% if event.status == 'completed' %}selected{% endif %}>Kết thúc</option>
+          </select>
+        </div>
+
+        <button type="submit">Lưu Chương Trình</button>
+      </form>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Quản Lý Chương Trình</p>
+    </footer>
+  </body>
+</html>
